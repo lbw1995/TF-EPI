@@ -3,7 +3,7 @@ from readfile import readfileforepi
 from function import train_tokens, evaluate_tokens
 
 
-def lf_fine_tuning_bertcnn_train(modelname = "Robert", tokenizerpath, pretrain_model_path, train_data_path, modelsavepath, dataname, tokenizer_maxlen=5100, knum=6, train_batchsize=2, shuffle=True, learning_rate=1e-5, epochs=30, kernel_size=10):
+def lf_fine_tuning_bertcnn_train(modelname, tokenizerpath, pretrain_model_path, train_data_path, modelsavepath, dataname, tokenizer_maxlen=5100, knum=6, train_batchsize=2, shuffle=True, learning_rate=1e-5, epochs=30, kernel_size=10):
     hidden_size = 768
     n_class = 2
     filter_sizes = [6, 6, 6]

@@ -35,7 +35,7 @@ def main():
             if len(sys.argv)!=9:
                 text_for_print(5)
             else:
-                print("This is the fine tuning part of the software.")
+                print("This is the validation part of the software.")
                 lf_fine_tuning_bertcnn_validate(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], validate_batchsize=int(sys.argv[7]), epochs=int(sys.argv[8]))
         elif sys.argv[1]=="finetuningbertcnntranstrain":
             if len(sys.argv)!=12:
@@ -47,7 +47,7 @@ def main():
             if len(sys.argv)!=9:
                 text_for_print(7)
             else:
-                print("This is the fine tuning part of the software.")
+                print("This is the validation part of the software.")
                 lf_fine_tuning_bertcnn_trans_validate(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], validate_batchsize=int(sys.argv[7]), epochs=int(sys.argv[8]))
         elif sys.argv[1]=="motifdiscovery":
             if len(sys.argv)!=9:

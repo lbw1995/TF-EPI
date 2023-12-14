@@ -788,7 +788,7 @@ def save_kmers_interactions(savepath, element_counts, cutnumber):
                 return
             
             
-def motif_discovery(modelname = "Robert", region, tokenizerpath, pos_data_path, neg_data_path, modelpath, motifsavepath):
+def motif_discovery(modelname, region, tokenizerpath, pos_data_path, neg_data_path, modelpath, motifsavepath):
     if(region=="promoter"):
         print("Find motifs of promoter sequences.")
         dev_pos, pos_atten_scores = interface_for_robert_promoters(modelname, tokenizerpath, pos_data_path, modelpath)    
@@ -812,7 +812,7 @@ def motif_discovery(modelname = "Robert", region, tokenizerpath, pos_data_path, 
                                        )
 
     
-def discover_kmer_interaction(modelname, tokenizerpath, data_path, modelpath, save_file_dir, p = 0.8, cutnumber):
+def discover_kmer_interaction(modelname, tokenizerpath, data_path, modelpath, save_file_dir, p, cutnumber):
     element_counts = get_kmers_interactions(modelname, tokenizerpath, data_path, modelpath, p)
     save_kmers_interactions(save_file_dir,element_counts,cutnumber)
     
