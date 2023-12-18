@@ -17,7 +17,6 @@ TF-EPI is a Python-based software. It is recommended to run the program using Py
     os
     sys
     ahocorasick
-    operator
     scipy
     statsmodels
     biopython 1.79
