@@ -157,7 +157,7 @@ For usage:
     python ./main.py motifdiscovery [model name] [region of motifs] [tokenizer path] [input possitive data path] [input negative data path] [model path] [motif save path]
 Parameters required:
 
-Name of model: use Roberta model or Longformer model
+Name of model: use Roberta model or Longformer model, only avaliable for "Robert" and "Longformer"
 
 Region of motifs: Enhance region or Promoter region
 
@@ -196,6 +196,47 @@ Cut number: number of output top k-mer-k-mer with high interactions.
 ## Demo test
 To help you use our method, we have uploaded a demo file for you to test, and provide the following code for your testing, enabling you to use our method on your own dataset.
 
-The whole framework is:
+First you can try to install anaconda and create a new environment by:
+
+    conda create -n TF-EPI python=3.8
+    conda activate TF-EPI
+Then, install all the required packages:
+
+    conda install pytorch==1.10.0 torchvision==0.11.1 cudatoolkit=11.3 -c pytorch
+    conda install cudnn=8.2.1
+    conda install transformers=4.29.2
+    conda install pyahocorasick=2.0 -c conda-forge
+    conda install statsmodels
+    conda install biopython=1.79 -c conda-forgey
+    conda install scikit-learn
+    conda install matplotlib
+
+### Fine-tune the pretrained model with example dataset
+We uploaded an example dataset of IMR90 to help you test the code.
+
+For usage:
+
+    mkdir ./fine-tuned_models
+    python ./main.py inetuningbertcnntrain Robert ./tokenizer/kmerstokenizer/ ./pretrained_model/ ./data/combineIMR90.HiC-Benchmark.v3.csv ./fine-tuned_models IMR90 2 30
+Then you can use the validation dataset to validate your fine-tuned models:
+
+    mkdir ./figures
+    python main.py finetuningbertcnnvalidate ./tokenizer/kmerstokenizer/ ./data/combineIMR90.HiC-Benchmark.v3_test.csv ./fine-tuned_models ./figures/ IMR90 2 30
+Then the validation results will be output and the AUC curve will be saved in the folder figures.
+
+### Fine-tune the pretrained model with cross cell type dataset
+
+### Motif discovery example
+We uploaded a fine-tuned model to help you discover motifs based on the model.
+
+For usage:
+
+    mkdir ./motifs
+    python ./main.py motifdiscovery Robert enhancer ./tokenizer/kmerstokenizer/ ./data/IMR90possitive.csv ./data/IMR90negative.csv ./fine-tuned_model/IMR90_fine-tuned.pth ./motifs
+Then you will get the motif files in the folder motifs.
+
+### Interact k-mers discovery example
+
+    
 
     
