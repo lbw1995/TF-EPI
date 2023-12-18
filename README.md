@@ -15,7 +15,6 @@ TF-EPI is a Python-based software. It is recommended to run the program using Py
     scikit-learn
     transformers 4.29.2
     os
-    pickle
     sys
     ahocorasick
     operator
