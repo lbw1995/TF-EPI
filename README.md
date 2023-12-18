@@ -31,3 +31,10 @@ Download the compressed source file TF-EPI.tar.gz and do as follows:
     $ tar -xzvf TF-EPI.tar.gz
     $ cd ./TF-EPI
     $ python ./main.py [options]
+## Required parameters:
+TF-EPI comprises various program modules, including pretraining, cell type-specific fine-tuning, cross cell type fine-tuning, motif discovery, and interact k-mers discovery.
+To utilize the different modules, it is necessary to specify the required module after 'python main.py' and provide the necessary parameters：
+
+    python ./main.py [module name] [parameters]
+### Pretraining
+
