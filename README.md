@@ -43,11 +43,13 @@ This module is used to pretrain a model with your own DNA sequences. To use this
 For usage:
 
     python ./main.py rbpretraining [tokenizer path] [input dir path] [model save path] [batch size] [number hidden layers] [max tokenizer length]
-Here the tokenizer path is the path of tokenizer. You are suggested to use the tokenizer under the folder tokenizer. 
+Parameters required:
 
-The input dir path is the folder path of DNA sequences.
+Tokenizer path : the path of tokenizer. You are suggested to use the tokenizer under the folder tokenizer. 
 
-The model save path is the path you used to save the pretrained model.
+The input dir path : the folder path of DNA sequences.
+
+The model save path : the path you used to save the pretrained model.
 
 The batch size : Default 2
 
@@ -65,7 +67,9 @@ We give an example of the input file and you can generater your own input file w
 For training process, you should do:
 
     python ./main.py finetuningbertcnntrain [modelname] [tokenizer path] [pretraining model path] [training data path] [model save path] [data mane] [batch size] [epoch]
-The modelname is the type of the model, only avaliable for "Robert" and "Longformer". You are recommended to use "Robert".
+Parameters required:
+
+Modelname : the type of the model, only avaliable for "Robert" and "Longformer". You are recommended to use "Robert".
 
 Tokenizer path: the path of tokenizer.
 
@@ -85,6 +89,8 @@ For the validation process, you should do:
 
      python ./main.py finetuningbertcnnvalidate [tokenizer path] [validation data path] [model save path] [figure path] [data name] [batch size] [epoch]
 This is the used for Validating the model on the validation set.
+
+Parameters required:
 
 Tokenizer path: the path of tokenizer.
 
@@ -108,6 +114,8 @@ This module is used to fine-tune a model with cross cell type dataset. You can f
 For training process, you should do:
 
     python ./main.py finetuningbertcnntranstrain [tokenizer path] [pretraining model path] [training data path] [validation data path] [model save path] [data mane] [batch size] [kernel size] [epoch]
+Parameters required:
+
 Tokenizer path: the path of tokenizer.
 
 Pretrining model path: the save path of the pretrained model.
@@ -129,6 +137,8 @@ Epoch : Default 30
 For the validation process, you should do:
 
     python ./main.py finetuningbertcnntransvalidate [tokenizer path] [validation data path] [model save path] [figure path] [data mane] [batch size] [epoch]
+Parameters required:
+
 Tokenizer path: the path of tokenizer.
 
 Input validate data path: the path of validation dataset.
@@ -144,3 +154,52 @@ Validating batchsize: batch size of the validation dataset. Default:1
 Epoch : should be same as the number of Epoch in trainng steps. Default 30
 
 ### Motif discovery
+This module is used for the discovery of motifs based on the attention matix of transformer encoders.
+
+For usage:
+
+    python ./main.py motifdiscovery [model name] [region of motifs] [tokenizer path] [input possitive data path] [input negative data path] [model path] [motif save path]
+Parameters required:
+
+Name of model: use Roberta model or Longformer model
+
+Region of motifs: Enhance region or Promoter region
+
+Tokenizer path: the path of tokenizer.
+
+Input possitive data path: dataset of possitive samples.
+
+Input negative data path: dataset of negative samples.
+
+Model path: the path of trained model.
+
+Motif save path: the save path of the motifs.
+
+### Interact k-mers discovery
+This module is used for the discovery of high frequency k-mer-k-mer interactions.
+
+For usage:
+
+     python ./main.py interactkmerdiscovery [model name] [region of motifs] [input data path] [model path] [interaction save path] [p value] [cut number]
+Parameters required:
+
+Name of model: use Roberta model or Longformer model
+
+Region of motifs: Enhance region or Promoter region
+
+Tokenizer path: the path of tokenizer.
+
+Input possitive data path: dataset of possitive samples.
+
+Interaction save path: the save path of the k-mer-k-mer interactions.
+
+P-value: cut off value of the high attention k-mer-k-mer interactions.
+
+Cut number: number of output top k-mer-k-mer with high interactions.
+
+##Demo test
+To help you use our method, we have uploaded a demo file for you to test, and provide the following code for your testing, enabling you to use our method on your own dataset.
+
+The whole framework is:
+
+    
