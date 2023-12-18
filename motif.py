@@ -6,7 +6,6 @@ from function import stringtokmers,concatekmers
 import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
 import os
 import sys
