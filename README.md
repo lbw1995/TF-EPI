@@ -22,9 +22,9 @@ TF-EPI is a Python-based software. It is recommended to run the program using Py
     biopython 1.79
 
 ## Install from source
-Download the compressed source file TF-EPI.tar.gz and do as follows:
+Because we use git lfs to upload some big files, you are recommended to download all the code and data by:
 
-    $ tar -xzvf TF-EPI.tar.gz
+    $ git lfs clone https://github.com/lbw1995/TF-EPI.git
     $ cd ./TF-EPI
     $ python ./main.py [options]
 ## Required parameters:
@@ -157,9 +157,9 @@ For usage:
     python ./main.py motifdiscovery [model name] [region of motifs] [tokenizer path] [input possitive data path] [input negative data path] [model path] [motif save path]
 Parameters required:
 
-Name of model: use Roberta model or Longformer model, only avaliable for "Robert" and "Longformer"
+Name of model: use Roberta model or Longformer model, only avaliable for "Robert" and "Longformer".
 
-Region of motifs: Enhance region or Promoter region
+Region of motifs: Enhance region or Promoter region.
 
 Tokenizer path: the path of tokenizer.
 
@@ -179,13 +179,13 @@ For usage:
      python ./main.py interactkmerdiscovery [model name] [region of motifs] [input data path] [model path] [interaction save path] [p value] [cut number]
 Parameters required:
 
-Name of model: use Roberta model or Longformer model
+Name of model: use Roberta model or Longformer model, only avaliable for "Robert" and "Longformer".
 
 Region of motifs: Enhance region or Promoter region
 
 Tokenizer path: the path of tokenizer.
 
-Input possitive data path: dataset of possitive samples.
+Input data path: dataset of possitive samples or negative samples.
 
 Interaction save path: the save path of the k-mer-k-mer interactions.
 
@@ -217,7 +217,7 @@ We uploaded an example dataset of IMR90 to help you test the code.
 For usage:
 
     mkdir ./fine-tuned_models
-    python ./main.py inetuningbertcnntrain Robert ./tokenizer/kmerstokenizer/ ./pretrained_model/ ./data/combineIMR90.HiC-Benchmark.v3.csv ./fine-tuned_models IMR90 2 30
+    python ./main.py finetuningbertcnntrain Robert ./tokenizer/kmerstokenizer/ ./pretrained_model/ ./data/combineIMR90.HiC-Benchmark.v3.csv ./fine-tuned_models IMR90 2 30
 Then you can use the validation dataset to validate your fine-tuned models:
 
     mkdir ./figures
@@ -225,6 +225,15 @@ Then you can use the validation dataset to validate your fine-tuned models:
 Then the validation results will be output and the AUC curve will be saved in the folder figures.
 
 ### Fine-tune the pretrained model with cross cell type dataset
+We uploaded two example dataset to help you use this module.
+
+For usage of training steps:
+
+    python ./main.py finetuningbertcnntranstrain ./tokenizer/kmerstokenizer/ ./pretrained_model_lf/ ./data/source.csv ./data/target.csv ./fine-tuned_models testtrans 1 1 10 30
+
+For usage of validation steps:
+
+    python ./main.py finetuningbertcnntransvalidate ./tokenizer/kmerstokenizer/ ./data/target.csv ./fine-tuned_models ./figures/ testtrans 1 30
 
 ### Motif discovery example
 We uploaded a fine-tuned model to help you discover motifs based on the model.
