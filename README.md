@@ -11,7 +11,6 @@ TF-EPI is a Python-based software. It is recommended to run the program using Py
     numpy
     pandas
     tqdm
-    random
     matplotlib
     scikit-learn
     transformers 4.29.2
