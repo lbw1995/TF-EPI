@@ -33,7 +33,7 @@ TF-EPI comprises various program modules, including pretraining, cell type-speci
 To utilize the different modules, it is necessary to specify the required module after 'python main.py' and provide the necessary parameters：
 
     python ./main.py [module name] [parameters]
-### Pretraining
+## Pretraining
 This module is used to pretrain a model with your own DNA sequences. To use this module, you first need to prepare some DNA sequences and save them in a folder. TF-EPI will read your folder and train the pretrain model based on all the DNA sequence files in your folder. A demo example is provided in the data folder to show the files required for pretraining.
 
 For usage:
@@ -55,7 +55,7 @@ Max tokenizer length : Max tokens of your input sequences. Default: 5100
 
 If you do not want to pretrain a model by yourself, we prepare a pretrained model under the folder pretrained_model.
 
-### Cell type-specific fine-tuning
+## Cell type-specific fine-tuning
 This module is used to fine-tune a model with your own enhancer promoter pairs. To use this module, you should input split your dataset into training set and validation set and seperately do the training and validation. The data should be a csv format file with the following columns:
 
     enhancer_name,promoter_name,enhancer_seq,promoter_seq,label
@@ -104,7 +104,7 @@ Batchsize: batch size of the validation steps. Default:1
 
 Epoch : should be same as the number of Epoch in trainng steps. Default 30
 
-### Cross cell type fine-tuning
+## Cross cell type fine-tuning
 This module is used to fine-tune a model with cross cell type dataset. You can fine-tune your model on dataset of one cell type and validate your model on another cell type. The data format is same as the cell type-specific fine-tuning dataset. You should prepare two different cell type dataset to train your model.
 
 For training process, you should do:
@@ -149,7 +149,7 @@ Validating batchsize: batch size of the validation dataset. Default:1
 
 Epoch : should be same as the number of Epoch in trainng steps. Default 30
 
-### Motif discovery
+## Motif discovery
 This module is used for the discovery of motifs based on the attention matix of transformer encoders.
 
 For usage:
@@ -171,7 +171,7 @@ Model path: the path of trained model.
 
 Motif save path: the save path of the motifs.
 
-### Interact k-mers discovery
+## Interact k-mers discovery
 This module is used for the discovery of high frequency k-mer-k-mer interactions.
 
 For usage:
@@ -209,7 +209,7 @@ Then, install all the required packages:
     conda install scikit-learn
     conda install matplotlib
 
-### Fine-tune the pretrained model with example dataset
+## Fine-tune the pretrained model with example dataset
 We uploaded an example dataset of IMR90 to help you test the code.
 
 For usage:
@@ -222,7 +222,7 @@ Then you can use the validation dataset to validate your fine-tuned models:
     python main.py finetuningbertcnnvalidate ./tokenizer/kmerstokenizer/ ./data/combineIMR90.HiC-Benchmark.v3_test.csv ./fine-tuned_models ./figures/ IMR90 2 30
 Then the validation results will be output and the AUC curve will be saved in the folder figures.
 
-### Fine-tune the pretrained model with cross cell type dataset
+## Fine-tune the pretrained model with cross cell type dataset
 We uploaded two example dataset to help you use this module.
 
 For usage of training steps:
@@ -233,7 +233,7 @@ For usage of validation steps:
 
     python ./main.py finetuningbertcnntransvalidate ./tokenizer/kmerstokenizer/ ./data/target.csv ./fine-tuned_models ./figures/ testtrans 1 30
 
-### Motif discovery example
+## Motif discovery example
 We uploaded a fine-tuned model to help you discover motifs based on the model.
 
 For usage:
@@ -242,7 +242,7 @@ For usage:
     python ./main.py motifdiscovery Robert enhancer ./tokenizer/kmerstokenizer/ ./data/IMR90possitive.csv ./data/IMR90negative.csv ./fine-tuned_model/IMR90_fine-tuned.pth ./motifs
 Then you will get the motif files in the folder motifs.
 
-### Interact k-mers discovery example
+## Interact k-mers discovery example
 
 For usage:
 
