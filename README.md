@@ -27,6 +27,7 @@ TF-EPI is a Python-based software. It is recommended to run the program using Py
 
 ## Install from source
 Download the compressed source file TF-EPI.tar.gz and do as follows:
+
     $ tar -xzvf TF-EPI.tar.gz
     $ cd ./TF-EPI
     $ python ./main.py [options]
