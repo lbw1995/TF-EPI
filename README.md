@@ -81,3 +81,8 @@ Batchsize: batch size of the validation steps. Default:1
 Epoch : should be same as the number of Epoch in trainng steps. Default 30
 
 ### Cross cell type fine-tuning
+This module is used to fine-tune a model with cross cell type dataset. You can fine-tune your model on dataset of one cell type and validate your model on another cell type. The data format is same as the cell type-specific fine-tuning dataset. You should prepare two different cell type dataset to train your model.
+
+For training process, you should do:
+
+    python ./main.py lf_fine_tuning_bertcnn_trans_train [tokenizer path] [training data path] [validation data path] 
