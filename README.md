@@ -109,7 +109,7 @@ This module is used to fine-tune a model with cross cell type dataset. You can f
 
 For training process, you should do:
 
-    python ./main.py finetuningbertcnntranstrain [tokenizer path] [pretraining model path] [training data path] [validation data path] [model save path] [data mane] [batch size] [kernel size] [epoch]
+    python ./main.py finetuningbertcnntranstrain [tokenizer path] [pretraining model path] [training data path] [validation data path] [model save path] [data mane] [training batch size] [validation batch size] [kernel size] [epoch]
 Parameters required:
 
 Tokenizer path: the path of tokenizer.
@@ -124,9 +124,9 @@ Data name: the name of dataset.
 
 Model save path: the save path of the fine-tuned model.
 
-Training batchsize: batch size of the training dataset. Default:1
+Training batch size: batch size of the training dataset. Default:1
 
-Validating batchsize: batch size of the validation dataset. Default:1
+Validating batc hsize: batch size of the validation dataset. Default:1
 
 Epoch : Default 30
 
@@ -176,12 +176,10 @@ This module is used for the discovery of high frequency k-mer-k-mer interactions
 
 For usage:
 
-     python ./main.py interactkmerdiscovery [model name] [region of motifs] [input data path] [model path] [interaction save path] [p value] [cut number]
+     python ./main.py interactkmerdiscovery [model name] [tokenizer path] [input data path] [model path] [interaction save path] [p value] [cut number]
 Parameters required:
 
 Name of model: use Roberta model or Longformer model, only avaliable for "Robert" and "Longformer".
-
-Region of motifs: Enhance region or Promoter region
 
 Tokenizer path: the path of tokenizer.
 
@@ -189,7 +187,7 @@ Input data path: dataset of possitive samples or negative samples.
 
 Interaction save path: the save path of the k-mer-k-mer interactions.
 
-P-value: cut off value of the high attention k-mer-k-mer interactions.
+P-value: cut off value of the high attention k-mer-k-mer interactions(from 0 to 1).
 
 Cut number: number of output top k-mer-k-mer with high interactions.
 
@@ -245,6 +243,11 @@ For usage:
 Then you will get the motif files in the folder motifs.
 
 ### Interact k-mers discovery example
+
+For usage:
+
+    mkdir ./kmersinteract
+    python ./main.py interactkmerdiscovery Robert ./tokenizer/kmerstokenizer/ ./data/IMR90possitive.csv ./fine-tuned_model/IMR90_fine-tuned.pth ./kmersinteract/test_pos_0.8.txt 0.8 100
 
     
 
