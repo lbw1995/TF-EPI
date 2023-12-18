@@ -58,13 +58,20 @@ We give an example of the input file and you can generater your own input file w
 For training process, you should do:
 
     python ./main.py finetuningbertcnntrain [modelname] [tokenizer path] [pretraining model path] [training data path] [model save path] [data mane] [batch size] [epoch]
-The modelname is the type of the model, only avaliable for "Robert" and "Longformer". You are recommended to use "Robert".\n
+The modelname is the type of the model, only avaliable for "Robert" and "Longformer". You are recommended to use "Robert".
+
 Tokenizer path: the path of tokenizer.
+
 Input train data path: the path of training dataset.
+
 Pretrining model path: the save path of the pretrained model.
+
 Model save path: the save folder of the fine-tuned model. The model of each epoch will be saved in this folder and used for the following validation.
+
 Data name: the name of dataset. Used to seperate different cell line.
+
 Batchsize: batch size of the training steps. Default:2
+
 Epoch : Default 30
 
 For the validation process, you should do:
