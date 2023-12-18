@@ -14,7 +14,6 @@ TF-EPI is a Python-based software. It is recommended to run the program using Py
     matplotlib
     scikit-learn
     transformers 4.29.2
-    pathlib
     os
     pickle
     sys
