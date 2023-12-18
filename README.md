@@ -24,3 +24,9 @@ TF-EPI is a Python-based software. It is recommended to run the program using Py
     scipy
     statsmodels
     biopython 1.79
+
+## Install from source
+Download the compressed source file TF-EPI.tar.gz and do as follows:
+    $ tar -xzvf TF-EPI.tar.gz
+    $ cd ./TF-EPI
+    $ python ./main.py [options]
