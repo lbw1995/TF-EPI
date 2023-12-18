@@ -69,7 +69,7 @@ Epoch : Default 30
 
 For the validation process, you should do:
 
-     python ./main.py lf_fine_tuning_bertcnn_validate [tokenizer path] [validation data path] [model save path] [figure path] [data name] [batch size] [epoch]
+     python ./main.py finetuningbertcnnvalidate [tokenizer path] [validation data path] [model save path] [figure path] [data name] [batch size] [epoch]
 This is the used for Validating the model on the validation set.
 Tokenizer path: the path of tokenizer.
 Input validate data path: the path of validation dataset.
@@ -85,4 +85,26 @@ This module is used to fine-tune a model with cross cell type dataset. You can f
 
 For training process, you should do:
 
-    python ./main.py lf_fine_tuning_bertcnn_trans_train [tokenizer path] [training data path] [validation data path] 
+    python ./main.py finetuningbertcnntranstrain [tokenizer path] [pretraining model path] [training data path] [validation data path] [model save path] [data mane] [batch size] [kernel size] [epoch]
+Tokenizer path: the path of tokenizer.
+Pretrining model path: the save path of the pretrained model.
+Input train data path: the path of training dataset.
+Input validate data path: the path of validation dataset.
+Data name: the name of dataset.
+Model save path: the save path of the fine-tuned model.
+Training batchsize: batch size of the training dataset. Default:1
+Validating batchsize: batch size of the validation dataset. Default:1
+Epoch : Default 30
+
+For the validation process, you should do:
+
+    python ./main.py finetuningbertcnntransvalidate [tokenizer path] [validation data path] [model save path] [figure path] [data mane] [batch size] [epoch]
+Tokenizer path: the path of tokenizer.
+Input validate data path: the path of validation dataset.
+Model save path: the save path of the fine-tuned model.
+Figure path: the save dir path of the validation ROC plot
+Data name: the name of dataset.
+Validating batchsize: batch size of the validation dataset. Default:1
+Epoch : should be same as the number of Epoch in trainng steps. Default 30
+
+### Motif discovery
