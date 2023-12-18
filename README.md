@@ -51,4 +51,33 @@ Max tokenizer length : Max tokens of your input sequences. Default: 5100
 If you do not want to pretrain a model by yourself, we prepare a pretrained model under the folder pretrained_model.
 
 ### Cell type-specific fine-tuning
-This module is used to fine-tune a model with your own enhancer promoter pairs. 
+This module is used to fine-tune a model with your own enhancer promoter pairs. To use this module, you should input split your dataset into training set and validation set and seperately do the training and validation. The data should be a csv format file with the following columns:
+
+    enhancer_name,promoter_name,enhancer_seq,promoter_seq,label
+We give an example of the input file and you can generater your own input file with the same format.
+For training process, you should do:
+
+    python ./main.py finetuningbertcnntrain [modelname] [tokenizer path] [pretraining model path] [training data path] [model save path] [data mane] [batch size] [epoch]
+The modelname is the type of the model, only avaliable for "Robert" and "Longformer". You are recommended to use "Robert".
+Tokenizer path: the path of tokenizer.
+Input train data path: the path of training dataset.
+Pretrining model path: the save path of the pretrained model.
+Model save path: the save folder of the fine-tuned model. The model of each epoch will be saved in this folder and used for the following validation.
+Data name: the name of dataset. Used to seperate different cell line.
+Batchsize: batch size of the training steps. Default:2
+Epoch : Default 30
+
+For the validation process, you should do:
+
+     python ./main.py lf_fine_tuning_bertcnn_validate [tokenizer path] [validation data path] [model save path] [figure path] [data name] [batch size] [epoch]
+This is the used for Validating the model on the validation set.
+Tokenizer path: the path of tokenizer.
+Input validate data path: the path of validation dataset.
+Pretrining model path: the save folder path of the pretrained model.
+Model save path: the save path of the fine-tuned model.
+Figure path: the save dir path of the validation ROC plot
+Data name: the name of dataset.
+Batchsize: batch size of the validation steps. Default:1
+Epoch : should be same as the number of Epoch in trainng steps. Default 30
+
+### Cross cell type fine-tuning
