@@ -205,7 +205,7 @@ Then, install all the required packages:
     conda install transformers=4.29.2
     conda install pyahocorasick=2.0 -c conda-forge
     conda install statsmodels
-    conda install biopython=1.79 -c conda-forgey
+    conda install biopython=1.79 -c conda-forge
     conda install scikit-learn
     conda install matplotlib
 
