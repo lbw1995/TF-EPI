@@ -47,7 +47,7 @@ The input dir path : the folder path of DNA sequences.
 
 The model save path : the path you used to save the pretrained model.
 
-The batch size : Default 2
+The batch size : Default 3
 
 Number hidden layers : Number of transformer encoders of your pretrained model. Default 4
 
