@@ -103,7 +103,7 @@ def robert_lf_pre_training(tokenizerpath, inputpaths, model_output_path, tokeniz
     mask = []
     labels = []
     
-    paths0 = getpath(inputpaths, pathnum=1)
+    paths0 = getpath(inputpaths, pathnum=1000)
     
     for path in tqdm(paths0):
         newline = []
