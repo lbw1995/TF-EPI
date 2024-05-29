@@ -83,7 +83,6 @@ def interface_for_robert_promoters(modelname, tokenizerpath, data_path, modelpat
             #    attn_score.append(float(attention[0:0 + 1, :, 0, i].sum()))
             
             #compute for all tokens:
-            
             attentionmean = attention.mean(dim = 2)
             for i in range(se[0][0]+1, se[1][0]):
                 attn_score.append(float(attentionmean[0:0 + 1, :, i].sum()))
@@ -99,6 +98,7 @@ def interface_for_robert_promoters(modelname, tokenizerpath, data_path, modelpat
     return dev_pos, pos_atten_scores   
     
 def interface_for_robert_enhancers(modelname, tokenizerpath, data_path, modelpath, tokenizer_maxlen=5100, knum=6, batchsize=1, shuffle=True, setthreshold=False): ######robert attention generation
+    shuffle = False
     if modelname=="Longformer":
         tokenizer = LongformerTokenizer.from_pretrained(tokenizerpath, max_len=tokenizer_maxlen)
     elif modelname=="Robert":
@@ -136,11 +136,18 @@ def interface_for_robert_enhancers(modelname, tokenizerpath, data_path, modelpat
                 continue
             if se[0][0]!=2996 or se[1][0]!=4992:
                 continue
+                
+            #Only compute for first cls:
+            #for i in range(1, se[0][0]):
+            #    attn_score.append(float(attention[0:0 + 1, :, 0, i].sum()))
+                
+            #compute for all tokens:
+            attentionmean = attention.mean(dim = 2)
             for i in range(1, se[0][0]):
-                attn_score.append(float(attention[0:0 + 1, :, 0, i].sum()))
-            #attn_score[0] = np.mean(attn_score) #处理异常，是否有必要？？
-            if setthreshold:
-                attn_score[attn_score > 0.001] = 0.001
+                attn_score.append(float(attentionmean[0:0 + 1, :, i].sum()))
+            attn_score[0] = np.mean(attn_score) #处理异常，是否有必要？？
+            #if setthreshold:
+            #    attn_score[attn_score > 0.001] = 0.001
             #attn_score[attn_score > 0.001] = 0.001 #设置cut off是否有必要？
             real_scores = get_real_score(attn_score, 6, "mean")
             scores = []
@@ -754,7 +761,8 @@ def get_kmers_interactions(modelname, tokenizerpath, data_path, modelpath, p, to
             mean_values1 = np.mean(attmax[:, 1:2995], axis=1)
             attmax[:, 0] = mean_values1
             mean_values2 = np.mean(attmax[:, 2996:], axis=1)
-            attmax[:, 2995] = mean_values1
+            #attmax[:, 2995] = mean_values1
+            attmax[:, 2995] = mean_values2
             real_attmax = get_real_score_max(attmax)
             row_indices, col_indices = np.where(real_attmax > p)
             seq1s = [] #enhancer kmers
