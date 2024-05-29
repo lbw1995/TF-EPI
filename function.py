@@ -164,10 +164,11 @@ def train_token_trans(epoch, n_epoch, model, dataloaders, dataloadert, optimizer
     optimizer.zero_grad()
     
     for i in loop:
-        if epoch==0:
-            lamda = 1-i/len_dataloader*0.99
-        else:
-            lamda = 0.01
+        #if epoch==0:
+        #    lamda = 1-i/len_dataloader*0.99
+        #else:
+        #    lamda = 0.01
+        lamda = 0.01
         batch = data_source_iter.next()
         p = float(i + epoch * len_dataloader) / n_epoch / len_dataloader
         alpha = 2. / (1. + np.exp(-10 * p)) - 1
