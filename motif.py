@@ -163,7 +163,7 @@ def interface_for_robert_enhancers(modelname, tokenizerpath, data_path, modelpat
 
 
 
-#### ::: utils for DNABERT-viz motif search ::: ####
+#### ::: Adapted from DNABERT motif search ::: ####
 
 
 import os
